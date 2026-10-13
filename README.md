@@ -1,22 +1,22 @@
-# <div align='center'>Baileys - Typescript/Javascript WhatsApp Web API</div>
+# <div align='center'>Baileys - WhatsApp Web API</div>
 
 <div align="center">
 
-<img src="https://via.placeholder.com/1000x400/000000/FFFFFF?text=client+PROJECT+-+BAILEYS+API" alt="Header Image" width="100%"/>
+<img src="https://via.placeholder.com/1000x400/000000/FFFFFF?text=MIRACLE+PROJECT+-+BAILEYS+API" alt="Header Image" width="100%"/>
 
 <br/>
 
 <p>
   <img src="https://img.shields.io/npm/dw/baileys?label=npm&color=%23CB3837" alt="NPM Downloads"/>
-  <img src="https://img.shields.io/github/v/release/xzync/baileys?include_prereleases&sort=semver" alt="Latest Release"/>
-  <img src="https://img.shields.io/github/languages/code-size/xzync/baileys" alt="Code Size"/>
-  <img src="https://img.shields.io/github/license/xzync/baileys" alt="License"/>
-  <img src="https://img.shields.io/github/stars/xzync/baileys" alt="Stars"/>
-  <img src="https://img.shields.io/github/forks/xzync/baileys" alt="Forks"/>
+  <img src="https://img.shields.io/github/v/release/xzsync/xbail?include_prereleases&sort=semver" alt="Latest Release"/>
+  <img src="https://img.shields.io/github/languages/code-size/xzsync/xbail" alt="Code Size"/>
+  <img src="https://img.shields.io/github/license/xzsync/xbail" alt="License"/>
+  <img src="https://img.shields.io/github/stars/xzsync/xbail" alt="Stars"/>
+  <img src="https://img.shields.io/github/forks/xzsync/xbail" alt="Forks"/>
 </p>
 
 <p>
-  <img src="https://github-readme-stats.vercel.app/api?username=xzync&show_icons=true&theme=radical" alt="GitHub Stats"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=xzsync&show_icons=true&theme=radical" alt="GitHub Stats"/>
 </p>
 
 </div>
@@ -49,7 +49,7 @@ This is the only official repository and is maintained by the community.
 Do check out & run [example.ts](Example/example.ts) to see an example usage of the library.
 The script covers most common use cases.
 To run the example script, download or clone the repo and then type the following in a terminal:
-1. ``` cd path/to/Baileys ```
+1. ``` cd path/to/xbail ```
 2. ``` yarn ```
 3. ``` yarn example ```
 
@@ -57,17 +57,17 @@ To run the example script, download or clone the repo and then type the followin
 
 Use the stable version:
 ```
-yarn add @xzync/Baileys
+yarn add @xzsync/xbail
 ```
 
 Use the edge version (no guarantee of stability, but latest fixes + features)
 ```
-yarn add github:xzync/Baileys
+yarn add github:xzsync/xbail
 ```
 
 Then import your code using:
 ```ts 
-import makeWASocket from '@xzync/Baileys'
+import makeWASocket from '@xzsync/xbail'
 ```
 
 # Links
@@ -227,7 +227,7 @@ WhatsApp provides a multi-device API that allows Baileys to be authenticated as 
 > You can customize browser name if you connect with **QR-CODE**, with `Browser` constant, we have some browsers config, **see [here](https://baileys.whiskeysockets.io/types/BrowsersMap.html)**
 
 ```ts
-import makeWASocket from '@xzync/Baileys'
+import makeWASocket from '@xzsync/xbail'
 
 const client = makeWASocket({
     // can provide additional config here
@@ -247,7 +247,7 @@ If the connection is successful, you will see a QR code printed on your terminal
 The phone number can't have `+` or `()` or `-`, only numbers, you must provide country code
 
 ```ts
-import makeWASocket from '@xzync/Baileys'
+import makeWASocket from '@xzsync/xbail'
 
 const client = makeWASocket({
     // can provide additional config here
@@ -320,7 +320,7 @@ You obviously don't want to keep scanning the QR code every time you want to con
 
 So, you can load the credentials to log back in:
 ```ts
-import makeWASocket, { useMultiFileAuthState } from '@xzync/Baileys'
+import makeWASocket, { useMultiFileAuthState } from '@xzsync/xbail'
 
 const { state, saveCreds } = await useMultiFileAuthState('auth_info_baileys')
 
@@ -360,7 +360,7 @@ client.ev.on('messages.upsert', ({ messages }) => {
 > This example includes basic auth storage too
 
 ```ts
-import makeWASocket, { DisconnectReason, useMultiFileAuthState } from '@xzync/Baileys'
+import makeWASocket, { DisconnectReason, useMultiFileAuthState } from '@xzsync/xbail'
 import { Boom } from '@hapi/boom'
 
 async function connectToWhatsApp () {
@@ -407,7 +407,7 @@ connectToWhatsApp()
 - By default poll votes are encrypted and handled in `messages.update`
 ```ts
 import pino from "pino"
-import { makeInMemoryStore, getAggregateVotesInPollMessage } from '@xzync/Baileys'
+import { makeInMemoryStore, getAggregateVotesInPollMessage } from '@xzsync/xbail'
 
 const logger = pino({ timestamp: () => `,"time":"${new Date().toJSON()}"` }).child({ class: "@clienthost" })
 logger.level = "fatal"
@@ -445,7 +445,7 @@ client.ev.on("messages.update", async (chatUpdate) => {
 
 - By default event response are encrypted and handled in `messages.update`
 ```ts
-import { jidNormalizedUser, getAggregateResponsesInEventMessage } from '@xzync/Baileys'
+import { jidNormalizedUser, getAggregateResponsesInEventMessage } from '@xzsync/xbail'
 
 client.ev.on("messages.update", async ([chatUpdate]) => {
     const eventResponses = chatUpdate.update?.eventResponses
@@ -469,15 +469,15 @@ client.ev.on("messages.update", async ([chatUpdate]) => {
 It can be used as follows:
 
 ```ts
-import makeWASocket, { makeInMemoryStore } from '@xzync/Baileys'
+import makeWASocket, { makeInMemoryStore } from '@xzsync/xbail'
 // the store maintains the data of the WA connection in memory
 // can be written out to a file & read from it
 const store = makeInMemoryStore({ })
 // can be read from a file
-store.readFromFile('./baileys_store.json')
+store.readFromFile('./xbail_store.json')
 // saves the state to a file every 10s
 setInterval(() => {
-    store.writeToFile('./baileys_store.json')
+    store.writeToFile('./xbail_store.json')
 }, 10_000)
 
 const client = makeWASocket({ })
@@ -2029,7 +2029,7 @@ await client.sendMessage(jid, {
 If you want to save the media you received
 ```ts
 import { createWriteStream } from 'fs'
-import { downloadMediaMessage, getContentType } from '@xzync/Baileys'
+import { downloadMediaMessage, getContentType } from '@xzsync/xbail'
 
 client.ev.on('messages.upsert', async ({ [m] }) => {
     if (!m.message) return // if there is no text or media message
